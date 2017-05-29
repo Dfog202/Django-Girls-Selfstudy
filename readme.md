@@ -105,3 +105,64 @@ INSTALLED_APPS = [
     'blog',
 ]
 ```
+## 블로그 글 모델 만들기
+* blog/models.py
+```python
+from django.db import models
+from django.utils import timezone
+
+
+class Post(models.Model):
+    author = models.ForeignKey('auth.User')
+    title = models.CharField(max_length=200)
+    text = models.TextField()
+    created_date = models.DateTimeField(
+            default=timezone.now)
+    published_date = models.DateTimeField(
+            blank=True, null=True)
+
+    def publish(self):
+        self.published_date = timezone.now()
+        self.save()
+
+    def __str__(self):
+        return self.title
+```
+## admin ragister 변경
+* blog/admin.py
+```
+from django.contrib import admin
+from .models import Post
+
+admin.site.register(Post)
+```
+
+## 모델을 위한 테이블 만들기
+* ./manage.py migrate
+* ./manage.py makemigrations
+```
+우리가 변경한 내용을 DB에서 사용가능하게
+```
+
+* ./manage.py migrate
+```
+다시 적용하기위해 migrate 명령어 다시 실행
+```
+
+## 장고 관리자
+* 서버열기
+```
+python manage.py runserver
+```
+ http://127.0.0.1:8000/admin/
+
+ * 슈퍼유저 생성
+```
+./manage.py createsuperuser
+
+Username:
+Email address:
+Password:
+Password (again):
+Superuser created successfully.
+```
