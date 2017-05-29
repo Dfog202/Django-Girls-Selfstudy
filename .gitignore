@@ -1,9 +1,8 @@
-
 # Created by https://www.gitignore.io/api/linux,django,python,pycharm
 
 ## CUSTOM ##
-.diea/
-.swp
+.idea/
+*.swp
 
 ### Django ###
 *.log

@@ -43,7 +43,7 @@ https://www.gitignore.io/
 Linux, Python, Pycharm, Django
 
 vi .gitignore 에 내용 붙여넣기
-.diea/
+.idea/
 .swp
 ```
 
@@ -72,4 +72,36 @@ mv mysite django_app
 * 현재경로 확인
 ```
 pwd
+```
+
+## 파이참 연결
+* 새 프로젝트
+djangogirls 폴더에서 `charm .`
+* 환경설정
+```
+File > Settings > Project: practice > project interpriter
+```
+```
+* add Local
+
+ /home/<유저명>/.pyenv/versions/<가상환경 명>/bin/python
+
+```
+
+## 블로그 어플리케이션 생성
+* django_app 폴더에서
+```
+./manage.py startapp blog
+```
+* mysite/settings.py 수정
+```
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'blog',
+]
 ```
